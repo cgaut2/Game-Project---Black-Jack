@@ -7,16 +7,10 @@ public class B4Djack  {
     static MainMenu NewFrame2 = new MainMenu();
     
       
-     
-    /*public B4Djack(){
-       if(MainMenu.ChooseOnePlayer){
-           System.out.println("This Works");
-       }
-    }
-*/
+
     public static void main(String[] args) {
         NewFrame2.setVisible(true);
-        //B4Djack newGame = new B4Djack();
+       
        
     
     
