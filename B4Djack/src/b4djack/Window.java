@@ -11,10 +11,6 @@ public class Window extends javax.swing.JFrame {
         DealerCards.setEnabled(false);
         P1Cards.setEnabled(false);
         P2Cards.setEnabled(false);
-        if(!MainMenu.ChooseOnePlayer){
-            P2Hit.setEnabled(false);
-            P2Stand.setEnabled(false);
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -202,19 +198,20 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_P1HitActionPerformed
 
     private void P1StandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P1StandActionPerformed
-        P1Hit.setEnabled(false);
+        
     }//GEN-LAST:event_P1StandActionPerformed
 
     private void BetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BetButtonActionPerformed
-        // TODO add your handling code here:
+        Betting.PlayerOneBet();
+        
     }//GEN-LAST:event_BetButtonActionPerformed
 
     private void P2HitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P2HitActionPerformed
-        P2Cards.append("Test2"+"\n");
+        // TODO add your handling code here:
     }//GEN-LAST:event_P2HitActionPerformed
 
     private void P2StandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P2StandActionPerformed
-       P2Hit.setEnabled(false);
+        // TODO add your handling code here:
     }//GEN-LAST:event_P2StandActionPerformed
 
    
@@ -230,10 +227,10 @@ public class Window extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BetButton;
     private javax.swing.JTextArea DealerCards;
-    public javax.swing.JTextField GetBet;
+    public static javax.swing.JTextField GetBet;
     private javax.swing.JTextArea P1Cards;
     private javax.swing.JButton P1Hit;
-    private javax.swing.JLabel P1Money;
+    public static javax.swing.JLabel P1Money;
     private javax.swing.JButton P1Stand;
     private javax.swing.JTextArea P2Cards;
     private javax.swing.JButton P2Hit;

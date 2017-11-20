@@ -11,20 +11,22 @@ import java.util.Scanner;
  *
  * @author Ben
  */
-public class Betting {
+public class Betting{
+
     int Bet;
     
     
     public Betting(){
-    
     int Bet = Integer.parseInt(Window.GetBet.getText());
+    
     }
     public static void PlayerOneBet(){
-       int playerMoney = 100;
       Betting P1Bet = new Betting();
-      int money= P1Bet.Bet;
-      System.out.println(P1Bet.Bet);
-      System.out.println(money);
+      System.out.println(P1Bet);
+      InitBetting.playerMoney -= P1Bet.Bet;
+      Window.P1Money.setText(Integer.toString(InitBetting.playerMoney - P1Bet.Bet));
+ 
+     
     }
    
     

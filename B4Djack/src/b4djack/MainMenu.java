@@ -94,6 +94,7 @@ public class MainMenu extends javax.swing.JFrame {
         ChooseOnePlayer = true;
         B4Djack.ChooseGame();
         new Window().setVisible(true);
+        InitBetting.InitBets();
     }//GEN-LAST:event_OnePlayerActionPerformed
 
     
