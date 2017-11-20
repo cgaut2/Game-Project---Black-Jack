@@ -1,38 +1,59 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package b4djack;
 
-import java.util.Scanner;
-
-/**
- *
+/*
  * @author Ben
  */
+import javax.swing.*;
 public class Betting{
 
     int Bet;
-    
-    
-    public Betting(){
-    int Bet = Integer.parseInt(Window.GetBet.getText());
-    
-    }
-    public static void PlayerOneBet(){
-      Betting P1Bet = new Betting();
-      System.out.println(P1Bet);
-      InitBetting.playerMoney -= P1Bet.Bet;
-      Window.P1Money.setText(Integer.toString(InitBetting.playerMoney - P1Bet.Bet));
- 
-     
-    }
+   static int potSize = 0;
+  static int UserBet;
+  static int UserBet2;
    
     
+    
+    
+    public static void PlayerOneBet(){
+     
+        try{
+            UserBet = Integer.parseInt(Window.GetBet.getText());
+            System.out.println(UserBet);
+            Window.P1Money.setText("$"+ Integer.toString(InitBetting.playerMoney - UserBet));
+            InitBetting.playerMoney -= UserBet;
+            Window.Pot.setText("Pot: $" + (potSize + UserBet));
+        }
+      catch(NumberFormatException e){
+          Window.GetBet.setText("");
+          JFrame f;
+          f = new JFrame();
+          JOptionPane.showMessageDialog(f, "Invalid Input");
+          
+      }
+      
+ 
+    }
+    
     public static void PlayerTwoBet(){
-        int playerMoney = 100;
-        int player2Money = 100;
+        try{
+        
+            UserBet2 = Integer.parseInt(Window.GetBet.getText());
+            System.out.println(UserBet2);
+            Window.P2Money.setText("$"+ Integer.toString(InitBetting.player2Money - UserBet2));
+            InitBetting.player2Money -= UserBet2;
+            Window.Pot.setText("Pot: $" + (UserBet + UserBet2));
+            
+            
+            
+        }
+      catch(NumberFormatException e){
+          Window.GetBet.setText("");
+          JFrame f;
+          f = new JFrame();
+          JOptionPane.showMessageDialog(f, "Invalid Input");
+          
+      }
+        
     }
              
 }

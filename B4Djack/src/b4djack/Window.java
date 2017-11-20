@@ -21,13 +21,13 @@ public class Window extends javax.swing.JFrame {
     public void BettingTurnSystem(){
         
                 if (!P1Turn){
-                //playerTwoBet();
+                Betting.PlayerTwoBet();
                 System.out.println("Player 2 Bet");
                 checkBet = true;
             }
                 else if(P1Turn){
                System.out.println("Player 1 bet");
-              //playerOneBet();
+              Betting.PlayerOneBet();
               P1Turn=false;
               
              
@@ -144,6 +144,7 @@ public class Window extends javax.swing.JFrame {
         jLabel3.setText("Dealer");
 
         Pot.setText("Pot: $0");
+        Pot.setToolTipText("");
 
         P1Money.setText("$0");
 
@@ -264,13 +265,20 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_P1StandActionPerformed
 
     private void BetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BetButtonActionPerformed
-        while(!checkBet){
+
         if(!MainMenu.ChooseOnePlayer){
-            BettingTurnSystem();
-            turnSystem();
+            if(P1Turn){
+               BettingTurnSystem(); 
+            }
+            else if(!P1Turn){
+              BettingTurnSystem();
+              BetButton.setEnabled(false);
+              turnSystem();
+            }
+            
         }
         else{
-            //playerOneBet();
+            Betting.PlayerOneBet();
             checkBet=true;
             P1Hit.setEnabled(true);
             P1Stand.setEnabled(true);
@@ -278,7 +286,7 @@ public class Window extends javax.swing.JFrame {
         
         
       
-        }
+        
     }//GEN-LAST:event_BetButtonActionPerformed
 
     private void P2HitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P2HitActionPerformed
@@ -305,7 +313,7 @@ public class Window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BetButton;
+    public static javax.swing.JButton BetButton;
     private javax.swing.JTextArea DealerCards;
     public static javax.swing.JTextField GetBet;
     private javax.swing.JTextArea P1Cards;
@@ -314,9 +322,9 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton P1Stand;
     private javax.swing.JTextArea P2Cards;
     private javax.swing.JButton P2Hit;
-    private javax.swing.JLabel P2Money;
+    public static javax.swing.JLabel P2Money;
     private javax.swing.JButton P2Stand;
-    private javax.swing.JLabel Pot;
+    public static javax.swing.JLabel Pot;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

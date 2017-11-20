@@ -87,6 +87,7 @@ public class MainMenu extends javax.swing.JFrame {
         ChooseOnePlayer = false;
         B4Djack.ChooseGame();
         new Window().setVisible(true);
+        InitBetting.InitBets2P();
     }//GEN-LAST:event_TwoPlayerActionPerformed
 
     private void OnePlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnePlayerActionPerformed
@@ -94,7 +95,7 @@ public class MainMenu extends javax.swing.JFrame {
         ChooseOnePlayer = true;
         B4Djack.ChooseGame();
         new Window().setVisible(true);
-        InitBetting.InitBets();
+        InitBetting.InitBets1P();
     }//GEN-LAST:event_OnePlayerActionPerformed
 
     
