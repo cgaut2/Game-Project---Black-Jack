@@ -4,13 +4,59 @@ package b4djack;
 
 public class Window extends javax.swing.JFrame {
 
-   
+    boolean P1Turn = true;
+    boolean checkBet = false;
     public Window() {
         initComponents();
         DealerCards.append("LimeAde"+"");
         DealerCards.setEnabled(false);
         P1Cards.setEnabled(false);
         P2Cards.setEnabled(false);
+        P2Hit.setEnabled(false);
+        P2Stand.setEnabled(false);
+        P1Hit.setEnabled(false);
+        P1Stand.setEnabled(false);
+        
+    }
+    public void BettingTurnSystem(){
+        
+                if (!P1Turn){
+                //playerTwoBet();
+                System.out.println("Player 2 Bet");
+                checkBet = true;
+            }
+                else if(P1Turn){
+               System.out.println("Player 1 bet");
+              //playerOneBet();
+              P1Turn=false;
+              
+             
+            }
+            
+    }
+    public void turnSystem(){
+         if(!MainMenu.ChooseOnePlayer){
+           
+            if (!P1Turn){
+                P1Hit.setEnabled(false);
+                P1Stand.setEnabled(false);
+                P2Hit.setEnabled(true);
+                P2Stand.setEnabled(true);
+                
+            }
+            else if(P1Turn){
+                P1Hit.setEnabled(true);
+                P1Stand.setEnabled(true);
+                P2Hit.setEnabled(false);
+                P2Stand.setEnabled(false);
+                
+            }
+        }
+         else{
+             P1Hit.setEnabled(true);
+             P1Stand.setEnabled(true);
+         }
+         
     }
 
     @SuppressWarnings("unchecked")
@@ -194,24 +240,58 @@ public class Window extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void P1HitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P1HitActionPerformed
-        P1Cards.append("Test"+"\n");
+        
+        if(!MainMenu.ChooseOnePlayer){
+            System.out.println("Player 1 hit");
+            P1Turn=false;
+            turnSystem();
+            //Player 1 Hits
+        }
+        else{
+            //Player 1 hits
+            System.out.println("P1 Hits");
+            
+        }
+        
     }//GEN-LAST:event_P1HitActionPerformed
 
     private void P1StandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P1StandActionPerformed
+        //Player 1 Stands?
+        System.out.println("Player 1 Stands");
+        P1Turn=false;
+        turnSystem();
         
     }//GEN-LAST:event_P1StandActionPerformed
 
     private void BetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BetButtonActionPerformed
-        Betting.PlayerOneBet();
+        while(!checkBet){
+        if(!MainMenu.ChooseOnePlayer){
+            BettingTurnSystem();
+            turnSystem();
+        }
+        else{
+            //playerOneBet();
+            checkBet=true;
+            P1Hit.setEnabled(true);
+            P1Stand.setEnabled(true);
+        }
         
+        
+      
+        }
     }//GEN-LAST:event_BetButtonActionPerformed
 
     private void P2HitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P2HitActionPerformed
-        // TODO add your handling code here:
+        ///Player 2 Hits
+        P1Turn=true;
+        turnSystem();
+        System.out.println("Player 2 hit");
     }//GEN-LAST:event_P2HitActionPerformed
 
     private void P2StandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P2StandActionPerformed
-        // TODO add your handling code here:
+        P1Turn=true;
+        turnSystem();
+       System.out.println("Player 2 Stands");
     }//GEN-LAST:event_P2StandActionPerformed
 
    

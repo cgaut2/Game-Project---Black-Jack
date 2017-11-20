@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/b4djack/Window.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>266</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ben/Documents/NetBeansProjects/Game-Project---Black-Jack-master/B4Djack/src/b4djack/InitBetting.java</file>
-            <file>file:/C:/Users/Ben/Documents/NetBeansProjects/Game-Project---Black-Jack-master/B4Djack/src/b4djack/MainMenu.java</file>
-            <file>file:/C:/Users/Ben/Documents/NetBeansProjects/Game-Project---Black-Jack-master/B4Djack/src/b4djack/Window.java</file>
-            <file>file:/C:/Users/Ben/Documents/NetBeansProjects/Game-Project---Black-Jack-master/B4Djack/src/b4djack/Betting.java</file>
-            <file>file:/C:/Users/Ben/Documents/NetBeansProjects/Game-Project---Black-Jack-master/B4Djack/src/b4djack/B4Djack.java</file>
+            <file>file:/Q:/School%20Stuff/ICS4U/Game-Project---Black-Jack-master/B4Djack/src/b4djack/B4Djack.java</file>
+            <file>file:/Q:/School%20Stuff/ICS4U/Game-Project---Black-Jack-master/B4Djack/src/b4djack/Window.java</file>
         </group>
     </open-files>
 </project-private>
