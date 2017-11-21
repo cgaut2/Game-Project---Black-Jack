@@ -73,7 +73,7 @@ public class Betting{
                 UserBet2=1/0;
             }
             if(UserBet>InitBetting.player2Money){
-                UserBet=1/0;
+                UserBet2=1/0;
             }
             //System.out.println(UserBet2);
             Window.P2Money.setText("$"+ Integer.toString(InitBetting.player2Money - UserBet2));
