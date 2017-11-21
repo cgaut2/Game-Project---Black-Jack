@@ -2,6 +2,7 @@
 
 // Author: Ben Krajewski
 // Editor: Justin Weiner
+// Minor edits: Curtis Gauthier
 
 /*
 allows the user to enter their bet through text box on the GUI
