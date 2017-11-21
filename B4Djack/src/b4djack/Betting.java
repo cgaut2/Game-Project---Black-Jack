@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Betting{
 
     int Bet;
-   static int potSize = 0;
+  public static int potSize = 0;
   static int UserBet;
   static int UserBet2;
    
@@ -15,20 +15,38 @@ public class Betting{
     
     
     public static void PlayerOneBet(){
-     
+        
         try{
             UserBet = Integer.parseInt(Window.GetBet.getText());
+            if(UserBet<0){
+                UserBet=1/0;
+            }
             System.out.println(UserBet);
             Window.P1Money.setText("$"+ Integer.toString(InitBetting.playerMoney - UserBet));
             InitBetting.playerMoney -= UserBet;
-            Window.Pot.setText("Pot: $" + (potSize + UserBet));
+            potSize +=UserBet;
+            Window.Pot.setText("Pot: $" + (potSize));
         }
       catch(NumberFormatException e){
           Window.GetBet.setText("");
           JFrame f;
           f = new JFrame();
-          JOptionPane.showMessageDialog(f, "Invalid Input");
+          JOptionPane.showMessageDialog(f, "Alright smartass, now there goes all of your money!");
+          Window.P1Money.setText("$"+ Integer.toString(InitBetting.playerMoney - InitBetting.playerMoney));
+          potSize+=InitBetting.playerMoney;
+          InitBetting.playerMoney -= InitBetting.playerMoney;
+          Window.Pot.setText("Pot: $" + (potSize));
+      }
+      catch(ArithmeticException z){
+          Window.GetBet.setText("");
+          JFrame f;
+          f = new JFrame();
+          JOptionPane.showMessageDialog(f, "Alright smartass, now there goes all of your money!");
+          Window.P1Money.setText("$"+ Integer.toString(InitBetting.playerMoney -InitBetting.playerMoney));
+          potSize+=InitBetting.playerMoney;
+          InitBetting.playerMoney -= InitBetting.playerMoney;
           
+          Window.Pot.setText("Pot: $" + (potSize));
       }
       
  
@@ -38,10 +56,14 @@ public class Betting{
         try{
         
             UserBet2 = Integer.parseInt(Window.GetBet.getText());
+            if(UserBet2<0){
+                UserBet2=1/0;
+            }
             System.out.println(UserBet2);
             Window.P2Money.setText("$"+ Integer.toString(InitBetting.player2Money - UserBet2));
             InitBetting.player2Money -= UserBet2;
-            Window.Pot.setText("Pot: $" + (UserBet + UserBet2));
+            potSize+=UserBet2;
+            Window.Pot.setText("Pot: $" + (potSize));
             
             
             
@@ -50,10 +72,29 @@ public class Betting{
           Window.GetBet.setText("");
           JFrame f;
           f = new JFrame();
-          JOptionPane.showMessageDialog(f, "Invalid Input");
+          JOptionPane.showMessageDialog(f, "Alright smartass, now there goes all of your money!");
+          Window.P2Money.setText("$"+ Integer.toString(InitBetting.player2Money - InitBetting.player2Money));
+          potSize+=InitBetting.player2Money;
+          InitBetting.player2Money -= InitBetting.player2Money;
+          Window.Pot.setText("Pot: $" + (potSize));
           
       }
+           catch(ArithmeticException z){
+          Window.GetBet.setText("");
+          JFrame f;
+          f = new JFrame();
+          JOptionPane.showMessageDialog(f, "Alright smartass, now there goes all of your money!");
+          Window.P2Money.setText("$"+ Integer.toString(InitBetting.player2Money - InitBetting.player2Money));
+          potSize+=InitBetting.player2Money;
+          InitBetting.player2Money -= InitBetting.player2Money;
+          Window.Pot.setText("Pot: $" + (potSize));
+      }
         
+    }
+    
+    public static void DealerBet(){
+        potSize =potSize*2;
+        Window.Pot.setText("Pot: $"+(potSize));
     }
              
 }

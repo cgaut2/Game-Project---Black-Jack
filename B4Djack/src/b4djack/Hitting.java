@@ -1,4 +1,4 @@
-package hitting;
+package b4djack;
 
 import java.util.*;
 
@@ -8,8 +8,8 @@ static int hvalue = 0;
 
 
 static void  hand(){
-    int Card1 = new Card((int)Math.floor(Math.random()*13+1)).getValue();
-    int Card2 = new Card((int)Math.floor(Math.random()*13+1)).getValue();
+    int Card1 = new Cards((int)Math.floor(Math.random()*13+1)).getValue();
+    int Card2 = new Cards((int)Math.floor(Math.random()*13+1)).getValue();
     
     
     hvalue = Card1+Card2;
@@ -21,20 +21,22 @@ static void  hand(){
     
 
 }
-static void addCard()
+static int addCard()
      {
         
-        int gains = new Card((int)Math.floor(Math.random()*13+1)).getValue();
-          
-        int nhand1 = hvalue+gains;
+        int gains = new Cards((int)Math.floor(Math.random()*13+1)).getValue();
+          return (gains);
         
-        System.out.println("Your hit card equals "+gains);
         
      }
-public static void main(String[] args) {
+
+/*public static void main(String[] args) {
     hand();
     addCard();
     
     }
-    
+  */  
+
 }
+
+

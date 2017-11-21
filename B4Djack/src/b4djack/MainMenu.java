@@ -4,7 +4,7 @@ package b4djack;
 
 public class MainMenu extends javax.swing.JFrame {
 
-   public static boolean ChooseOnePlayer;
+
     public MainMenu() {
         initComponents();
     }
@@ -15,23 +15,16 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        OnePlayer = new javax.swing.JButton();
         TwoPlayer = new javax.swing.JButton();
         QuitButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Vladimir Script", 1, 48)); // NOI18N
         jLabel1.setText("B4Djack");
 
-        OnePlayer.setText("1 Player");
-        OnePlayer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OnePlayerActionPerformed(evt);
-            }
-        });
-
-        TwoPlayer.setText("2 Players");
+        TwoPlayer.setText("Play");
         TwoPlayer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TwoPlayerActionPerformed(evt);
@@ -45,34 +38,36 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/b4djack/cards-icon.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(184, 184, 184))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(OnePlayer)
-                .addGap(70, 70, 70)
-                .addComponent(TwoPlayer)
-                .addGap(66, 66, 66)
-                .addComponent(QuitButton)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(TwoPlayer)
+                            .addGap(118, 118, 118)
+                            .addComponent(QuitButton))))
+                .addGap(152, 152, 152))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addGap(80, 80, 80)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OnePlayer)
-                    .addComponent(TwoPlayer)
-                    .addComponent(QuitButton))
-                .addContainerGap(94, Short.MAX_VALUE))
+                    .addComponent(QuitButton)
+                    .addComponent(TwoPlayer))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -84,19 +79,11 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void TwoPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TwoPlayerActionPerformed
         setVisible(false);
-        ChooseOnePlayer = false;
-        B4Djack.ChooseGame();
+      
+       
         new Window().setVisible(true);
         InitBetting.InitBets2P();
     }//GEN-LAST:event_TwoPlayerActionPerformed
-
-    private void OnePlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnePlayerActionPerformed
-        setVisible(false);
-        ChooseOnePlayer = true;
-        B4Djack.ChooseGame();
-        new Window().setVisible(true);
-        InitBetting.InitBets1P();
-    }//GEN-LAST:event_OnePlayerActionPerformed
 
     
     public static void main(String args[]) {
@@ -109,9 +96,9 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton OnePlayer;
     private javax.swing.JButton QuitButton;
     private javax.swing.JButton TwoPlayer;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
