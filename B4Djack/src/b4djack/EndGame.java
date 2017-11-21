@@ -1,3 +1,15 @@
+//Author Justin Weiner
+//Minor edits: Curtis Gauthier
+
+/*
+Contains everything that is ran after the players are done their turns
+Calls the dealer AI
+Contains all possible win conditions
+Eg. player 1 busts, dealer 19, player 2 20
+    player 2 wins
+gives winner the amount of money in the pot
+*/
+
 
 package b4djack;
 
@@ -59,8 +71,8 @@ public static void WinConditions(){
                }
                else if(Window.P1CardTotal==Window.P2CardTotal){
                    Window.WinnerDisplay.setText("P1 and P2 tie!");
-                   InitBetting.playerMoney=Betting.potSize/2;
-                   InitBetting.player2Money=Betting.potSize/2;
+                   InitBetting.playerMoney+=(Betting.potSize/2);
+                   InitBetting.player2Money+=(Betting.potSize/2);
                }
            }
            else if(!P1Bust && P2Bust){
@@ -78,28 +90,28 @@ public static void WinConditions(){
     }     
            if(!P1Bust&&!P2Bust){
                if(Window.P1CardTotal>Window.P2CardTotal){
-                   if(AI.total>=Window.P1CardTotal){
+                   if(AI.dealerTotal>=Window.P1CardTotal){
                        Window.WinnerDisplay.setText("Dealer Wins!");
                    }
-                   else if(AI.total<Window.P1CardTotal){
+                   else if(AI.dealerTotal<Window.P1CardTotal){
                        Window.WinnerDisplay.setText("P1 Wins!");
                        InitBetting.playerMoney+=Betting.potSize;
                    }
                }
                else if(Window.P1CardTotal<Window.P2CardTotal){
-                   if(AI.total>=Window.P2CardTotal){
+                   if(AI.dealerTotal>=Window.P2CardTotal){
                        Window.WinnerDisplay.setText("Dealer Wins!");
                    }
-                   else if(AI.total<Window.P2CardTotal){
+                   else if(AI.dealerTotal<Window.P2CardTotal){
                        Window.WinnerDisplay.setText("P2 Wins!");
                        InitBetting.player2Money+=Betting.potSize;
                    }
                }
                else if(Window.P1CardTotal==Window.P2CardTotal){
-                   if(AI.total>=Window.P2CardTotal){
+                   if(AI.dealerTotal>=Window.P2CardTotal){
                        Window.WinnerDisplay.setText("Dealer Wins!");
                    }
-                   else if(AI.total<Window.P2CardTotal){
+                   else if(AI.dealerTotal<Window.P2CardTotal){
                        Window.WinnerDisplay.setText("P1 and P2 Wins!");
                        InitBetting.playerMoney=Betting.potSize/2;
                        InitBetting.player2Money=Betting.potSize/2;
@@ -107,19 +119,19 @@ public static void WinConditions(){
                }
            }
            else if(P1Bust && !P2Bust){
-               if(AI.total>=Window.P2CardTotal){
+               if(AI.dealerTotal>=Window.P2CardTotal){
                        Window.WinnerDisplay.setText("Dealer Wins!");
                    }
-                   else if(AI.total<Window.P2CardTotal){
+                   else if(AI.dealerTotal<Window.P2CardTotal){
                        Window.WinnerDisplay.setText("P2 Wins!");
                        InitBetting.player2Money+=Betting.potSize;
                    }
            }
            else if (!P1Bust && P2Bust){
-                 if(AI.total>=Window.P1CardTotal){
+                 if(AI.dealerTotal>=Window.P1CardTotal){
                        Window.WinnerDisplay.setText("Dealer Wins!");
                    }
-                   else if(AI.total<Window.P1CardTotal){
+                   else if(AI.dealerTotal<Window.P1CardTotal){
                        Window.WinnerDisplay.setText("P1 Wins!");
                        InitBetting.playerMoney+=Betting.potSize;
                    }

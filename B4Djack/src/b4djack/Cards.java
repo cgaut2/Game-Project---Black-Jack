@@ -1,10 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package b4djack;
 
+
+//Author Franklin Dang
+
+/*
+if a card object is between 10 and 13 the value will be 10
+*/
+
+package b4djack;
 
 public class Cards
 {

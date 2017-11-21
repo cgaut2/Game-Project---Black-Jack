@@ -1,4 +1,12 @@
 
+//Author Ben Krajewski
+
+/*
+Initializes the players' betting amounts
+Displays amount bet
+*/
+
+
 package b4djack;
 
 

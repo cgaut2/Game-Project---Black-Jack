@@ -1,4 +1,12 @@
 
+//Author Justin Weiner
+//minor edits: Curtis Gauthier
+
+/*
+Creates the GUI of the game
+Contains buttons which lead to bet,stand hit
+Creates turn system which allows players to each pick a card and bet on their own turn
+*/
 package b4djack;
 
 import java.util.logging.Level;
@@ -24,7 +32,7 @@ public class Window extends javax.swing.JFrame {
         EndGame.P2Hold=false;
         P1CardTotal =0;
         P2CardTotal =0;
-        AI.total=0;
+        AI.dealerTotal=0;
         checkBet=false;
         Betting.potSize=0;
         P1Turn = true;
@@ -42,11 +50,11 @@ public class Window extends javax.swing.JFrame {
                 if (!P1Turn){
                 Betting.PlayerTwoBet();
                 Betting.DealerBet();
-                System.out.println("Player 2 Bet");
+                //System.out.println("Player 2 Bet");
                 checkBet = true;
             }
                 else if(P1Turn){
-               System.out.println("Player 1 bet");
+              // System.out.println("Player 1 bet");
               Betting.PlayerOneBet();
               P1Turn=false;
               
@@ -297,10 +305,10 @@ public class Window extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addComponent(P1Money)
                         .addComponent(P1Pic))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(P2Money)
-                        .addComponent(jLabel5)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(P2Money)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -332,10 +340,10 @@ public class Window extends javax.swing.JFrame {
     private void P1HitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P1HitActionPerformed
         
         
-            System.out.println("Player 1 hit");
+            //System.out.println("Player 1 hit");
             card = drawCard.drawCard();
             P1CardTotal+= card;
-            System.out.println(P1CardTotal);
+            //System.out.println(P1CardTotal);
             P1Cards.append(Integer.toString(card)+" ");
            
             P1Turn=false;
@@ -349,7 +357,7 @@ public class Window extends javax.swing.JFrame {
     private void P1StandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P1StandActionPerformed
   
         EndGame.P1Hold = true;
-        System.out.println("Player 1 Stands");
+        //System.out.println("Player 1 Stands");
         P1Turn=false;
         turnSystem();
         
@@ -379,18 +387,18 @@ public class Window extends javax.swing.JFrame {
         ///Player 2 Hits
         card = drawCard.drawCard();
         P2CardTotal+= card;
-        System.out.println(P2CardTotal);
+        //System.out.println(P2CardTotal);
         P2Cards.append(Integer.toString(card)+" ");
         P1Turn=true;
         turnSystem();
-        System.out.println("Player 2 hit");
+        //System.out.println("Player 2 hit");
     }//GEN-LAST:event_P2HitActionPerformed
 
     private void P2StandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P2StandActionPerformed
         EndGame.P2Hold = true;
         P1Turn=true;
         turnSystem();
-       System.out.println("Player 2 Stands");
+       //System.out.println("Player 2 Stands");
     }//GEN-LAST:event_P2StandActionPerformed
 
     private void GotoMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GotoMainMenuActionPerformed

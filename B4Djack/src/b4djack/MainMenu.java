@@ -1,4 +1,10 @@
 
+//Author Justin Weiner
+
+/*
+Contains buttons that either initialize the game or exit
+*/
+
 package b4djack;
 
 

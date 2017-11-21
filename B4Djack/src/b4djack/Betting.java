@@ -1,8 +1,18 @@
-package b4djack;
+
+
+// Author: Ben Krajewski
+// Editor: Justin Weiner
 
 /*
- * @author Ben
- */
+allows the user to enter their bet through text box on the GUI
+seperates player one and two to allow different bets
+adds the amount bet to the pot in the middle
+the dealer will double the pot
+*/
+
+package b4djack;
+
+
 import javax.swing.*;
 public class Betting{
 
@@ -21,7 +31,7 @@ public class Betting{
             if(UserBet<0){
                 UserBet=1/0;
             }
-            System.out.println(UserBet);
+            //System.out.println(UserBet);
             Window.P1Money.setText("$"+ Integer.toString(InitBetting.playerMoney - UserBet));
             InitBetting.playerMoney -= UserBet;
             potSize +=UserBet;
@@ -59,7 +69,7 @@ public class Betting{
             if(UserBet2<0){
                 UserBet2=1/0;
             }
-            System.out.println(UserBet2);
+            //System.out.println(UserBet2);
             Window.P2Money.setText("$"+ Integer.toString(InitBetting.player2Money - UserBet2));
             InitBetting.player2Money -= UserBet2;
             potSize+=UserBet2;
