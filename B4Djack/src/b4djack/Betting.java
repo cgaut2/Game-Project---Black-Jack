@@ -31,6 +31,9 @@ public class Betting{
             if(UserBet<0){
                 UserBet=1/0;
             }
+            if(UserBet>InitBetting.playerMoney){
+                UserBet=1/0;
+            }
             //System.out.println(UserBet);
             Window.P1Money.setText("$"+ Integer.toString(InitBetting.playerMoney - UserBet));
             InitBetting.playerMoney -= UserBet;
@@ -68,6 +71,9 @@ public class Betting{
             UserBet2 = Integer.parseInt(Window.GetBet.getText());
             if(UserBet2<0){
                 UserBet2=1/0;
+            }
+            if(UserBet>InitBetting.player2Money){
+                UserBet=1/0;
             }
             //System.out.println(UserBet2);
             Window.P2Money.setText("$"+ Integer.toString(InitBetting.player2Money - UserBet2));
