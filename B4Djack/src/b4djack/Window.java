@@ -22,6 +22,7 @@ public class Window extends javax.swing.JFrame {
     int card;
 
     public Window() {
+        //Resets all money/Booleans that check if the game is over
         initComponents();
         EndGame.DealerBust=false;
         EndGame.P2Bust=false;
@@ -43,18 +44,22 @@ public class Window extends javax.swing.JFrame {
         P2Stand.setEnabled(false);
         P1Hit.setEnabled(false);
         P1Stand.setEnabled(false);
-         
+        WhoBets.setText("Place your bet P1");
     }
     public void BettingTurnSystem(){
-            
+                //Player 2s Bet, Since it's last it also Bets for the Dealer
                 if (!P1Turn){
+                
                 Betting.PlayerTwoBet();
                 Betting.DealerBet();
                 //System.out.println("Player 2 Bet");
+                //Stops the betting function
                 checkBet = true;
             }
                 else if(P1Turn){
               // System.out.println("Player 1 bet");
+              //Player 1s Bet
+              WhoBets.setText("Place your bet P2");
               Betting.PlayerOneBet();
               P1Turn=false;
               
@@ -63,13 +68,15 @@ public class Window extends javax.swing.JFrame {
             
     }
     public void turnSystem(){
+        //Checks to see if both players either stood or busted
         EndGame.ValueCheck();
-        
-            
+        WhoBets.setText(" ");
+            //Player 2s Turn
             if (!P1Turn){
-                
+                //Disabled Player 1s buttons and Enables Player 2s buttons
                 P1Hit.setEnabled(false);
                 P1Stand.setEnabled(false);
+                //Skips player 2s turn to go back to player 1 if player 2 busted or stood
                 if(!EndGame.P2Done){
                 P2Hit.setEnabled(true);
                 P2Stand.setEnabled(true);
@@ -81,13 +88,17 @@ public class Window extends javax.swing.JFrame {
                     }
                 }
             }
+            //Player 1s Turn
             else if(P1Turn){
+                //Disables Player 2s buttons and enabled Player 1s buttons
                 P2Hit.setEnabled(false);
                 P2Stand.setEnabled(false);
+                //Skips player 1s turn to go back to player 2 if player 1 busted or stood
                 if(!EndGame.P1Done){
                 P1Hit.setEnabled(true);
                 P1Stand.setEnabled(true);
                 }
+                
                 else{
                     if(!EndGame.P2Done){
                         P2Hit.setEnabled(true);
@@ -133,10 +144,12 @@ public class Window extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         DealerMoney = new javax.swing.JLabel();
+        WhoBets = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         P1Hit.setText("Hit");
         P1Hit.addActionListener(new java.awt.event.ActionListener() {
@@ -225,9 +238,6 @@ public class Window extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(323, 323, 323)
-                                .addComponent(Pot, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(74, 74, 74)
                                 .addComponent(P1Pic)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -235,7 +245,12 @@ public class Window extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(P1Money, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 358, Short.MAX_VALUE)
-                                .addComponent(jLabel5)))
+                                .addComponent(jLabel5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(323, 323, 323)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(WhoBets)
+                                    .addComponent(Pot, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -295,8 +310,10 @@ public class Window extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(GotoMainMenu)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(WinnerDisplay)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(WhoBets)
                 .addGap(18, 18, 18)
                 .addComponent(Pot)
                 .addGap(23, 23, 23)
@@ -338,9 +355,10 @@ public class Window extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void P1HitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P1HitActionPerformed
-        
+            //Player 1 draws a card, then switches to Player 2s turn
         
             //System.out.println("Player 1 hit");
+            
             card = drawCard.drawCard();
             P1CardTotal+= card;
             //System.out.println(P1CardTotal);
@@ -355,7 +373,7 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_P1HitActionPerformed
 
     private void P1StandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P1StandActionPerformed
-  
+        //Player 1 stands, finishing the game for him then going back to player 2s turn
         EndGame.P1Hold = true;
         //System.out.println("Player 1 Stands");
         P1Turn=false;
@@ -365,7 +383,7 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_P1StandActionPerformed
 
     private void BetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BetButtonActionPerformed
-    
+            //Allows Player 1 to bet, then player 2 bets
             if(P1Turn){
                BettingTurnSystem(); 
             }
@@ -384,7 +402,7 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_BetButtonActionPerformed
 
     private void P2HitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P2HitActionPerformed
-        ///Player 2 Hits
+        //Player 2 draws a card, then switches to Player 1s turn
         card = drawCard.drawCard();
         P2CardTotal+= card;
         //System.out.println(P2CardTotal);
@@ -395,6 +413,7 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_P2HitActionPerformed
 
     private void P2StandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_P2StandActionPerformed
+        //Player 2 stands, finishing the game for him then going back to player 1s turn
         EndGame.P2Hold = true;
         P1Turn=true;
         turnSystem();
@@ -402,7 +421,9 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_P2StandActionPerformed
 
     private void GotoMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GotoMainMenuActionPerformed
+        //Closes Game Window
         dispose();
+        //Checks to see if a player has $0, then gives them a pity $25 to play with for the next game
         if(InitBetting.playerMoney ==0){
                 InitBetting.playerMoney+=25;
             }
@@ -410,6 +431,7 @@ public class Window extends javax.swing.JFrame {
                 InitBetting.player2Money+=25;
               
             }
+       //Goes back to Main Menu
         B4Djack.NewFrame2.setVisible(true);
     }//GEN-LAST:event_GotoMainMenuActionPerformed
 
@@ -439,6 +461,7 @@ public class Window extends javax.swing.JFrame {
     public static javax.swing.JLabel P2Money;
     public static javax.swing.JButton P2Stand;
     public static javax.swing.JLabel Pot;
+    private javax.swing.JLabel WhoBets;
     public static javax.swing.JLabel WinnerDisplay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

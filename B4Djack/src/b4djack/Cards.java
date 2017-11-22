@@ -7,7 +7,7 @@ if a card object is between 10 and 13 the value will be 10
 */
 
 package b4djack;
-
+//Returns card value, if you get a king, queen or jack the value is set to 10
 public class Cards
 {
     

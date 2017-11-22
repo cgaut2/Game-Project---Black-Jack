@@ -17,6 +17,7 @@ public class B4Djack  {
      
 
     public static void main(String[] args) {
+        //Opens the MainMenu Window
         NewFrame2.setVisible(true);
        
        

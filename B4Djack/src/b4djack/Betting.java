@@ -26,9 +26,10 @@ public class Betting{
     
     
     public static void PlayerOneBet(){
-        
+        //Gets the input from the field, then subtracts that value from p1s money and puts it in the pot
         try{
             UserBet = Integer.parseInt(Window.GetBet.getText());
+            //calls exceptions for invalid inputs
             if(UserBet<0){
                 UserBet=1/0;
             }
@@ -41,6 +42,7 @@ public class Betting{
             potSize +=UserBet;
             Window.Pot.setText("Pot: $" + (potSize));
         }
+        //Catches an invalid input, then punishes player 1 by going all in
       catch(NumberFormatException e){
           Window.GetBet.setText("");
           JFrame f;
@@ -51,6 +53,7 @@ public class Betting{
           InitBetting.playerMoney -= InitBetting.playerMoney;
           Window.Pot.setText("Pot: $" + (potSize));
       }
+        //Catches an invalid input, then punishes player 1 by going all in
       catch(ArithmeticException z){
           Window.GetBet.setText("");
           JFrame f;
@@ -67,13 +70,14 @@ public class Betting{
     }
     
     public static void PlayerTwoBet(){
+         //Gets the input from the field, then subtracts that value from p2s money and puts it in the pot
         try{
         
             UserBet2 = Integer.parseInt(Window.GetBet.getText());
             if(UserBet2<0){
                 UserBet2=1/0;
             }
-            if(UserBet>InitBetting.player2Money){
+            if(UserBet2>InitBetting.player2Money){
                 UserBet2=1/0;
             }
             //System.out.println(UserBet2);
@@ -85,6 +89,7 @@ public class Betting{
             
             
         }
+        //Catches an invalid input, then punishes player 2 by going all in
       catch(NumberFormatException e){
           Window.GetBet.setText("");
           JFrame f;
@@ -96,6 +101,7 @@ public class Betting{
           Window.Pot.setText("Pot: $" + (potSize));
           
       }
+        //Catches an invalid input, then punishes player 2 by going all in
            catch(ArithmeticException z){
           Window.GetBet.setText("");
           JFrame f;
@@ -110,6 +116,7 @@ public class Betting{
     }
     
     public static void DealerBet(){
+        //Dealer bets (his bet doubles the current pot)
         potSize =potSize*2;
         Window.Pot.setText("Pot: $"+(potSize));
     }

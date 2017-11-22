@@ -13,7 +13,7 @@ package b4djack;
      public static int dealerTotal =0;
     static void dealerAI(){
        
-        
+        //Dealer drwars cards until dealers card values are 16 or over
         while (dealerTotal<=16){          
             int card = drawCard.drawCard();
             dealerTotal = dealerTotal + card;
@@ -21,8 +21,8 @@ package b4djack;
             
             
         }
-        
-        if (dealerTotal>=17){
+        //Checks to see if dealer busts or not once he draws a card while his caerd values are 16 or greater
+        if (dealerTotal>=16){
 
             if (dealerTotal<=21){
                 
@@ -41,7 +41,7 @@ package b4djack;
 //I made this before we put code together but it still works
 class drawCard extends Hitting{
     public static int drawCard(){
-        
+        //draws a card for the dealer
         return(Hitting.addCard());
     }
 

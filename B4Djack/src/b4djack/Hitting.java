@@ -31,7 +31,7 @@ public class Hitting {
 }*/
 static int addCard()
      {
-        
+        //Picks a random card
         int gains = new Cards((int)Math.floor(Math.random()*13+1)).getValue();
           return (gains);
         
